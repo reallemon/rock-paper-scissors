@@ -30,21 +30,26 @@ function game() {
     const playerSelection = prompt('Enter "rock", "paper", or "scissors"');
     const result = playRound(playerSelection, getComputerChoice());
 
-    console.log(result[1]);
-    
-    switch (result[0]) {
-      case 1:
-        score.player += 1;
-        break;
-      case 0:
-        score.tie += 1;
-        break;
-      case -1:
-        score.computer += 1;
-    }
-
-    console.log(score);
+    scoreGame(result, score);
   }
 }
+
+function scoreGame(result, score) {
+  console.log(result[1]);
+
+  switch (result[0]) {
+    case 1:
+      score.player += 1;
+      break;
+    case 0:
+      score.tie += 1;
+      break;
+    case -1:
+      score.computer += 1;
+  }
+
+  console.log(score);
+}
+
 
 game();
