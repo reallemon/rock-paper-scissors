@@ -32,6 +32,8 @@ function game() {
 
     scoreGame(result, score);
   }
+
+  console.log(declareWinner(score));
 }
 
 function scoreGame(result, score) {
@@ -51,5 +53,14 @@ function scoreGame(result, score) {
   console.log(score);
 }
 
+function declareWinner(score) {
+  if (score.player > score.comuputer) {
+    return "Congatulations! You're the winner";
+  } else if (score.computer > score.player) {
+    return 'Sorry, you lost!';
+  } else {
+    return 'It was a tie!';
+  }
+}
 
 game();
