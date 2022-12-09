@@ -24,14 +24,12 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-  let score = {player: 0, computer: 0, tie: 0};
+  let score = { player: 0, computer: 0, tie: 0 };
 
-  for (let i = 0; i < 5; i++) {
-    const playerSelection = prompt('Enter "rock", "paper", or "scissors"');
-    const result = playRound(playerSelection, getComputerChoice());
+  const playerSelection = prompt('Enter "rock", "paper", or "scissors"');
+  const result = playRound(playerSelection, getComputerChoice());
 
-    scoreGame(result, score);
-  }
+  scoreGame(result, score);
 
   console.log(declareWinner(score));
 }
