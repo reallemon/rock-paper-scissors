@@ -1,3 +1,14 @@
-* {
+body {
   background-color: #111827;
+}
+
+#buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10em;
+  margin-top: 10%;
+}
+
+button {
+  scale: 200%;
 }

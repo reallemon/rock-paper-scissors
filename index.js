@@ -43,5 +43,3 @@ function game() {
 
   console.log(declareWinner(score));
 }
-
-game();
