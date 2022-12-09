@@ -25,21 +25,31 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function declareWinner(score) {
-  if (score.player > score.comuputer) return 'Congatulations! You win!';
+function handleClick(e) {
+  const choice = e.target.value;
 
-  if (score.computer > score.player) return 'Sorry, you lost!';
-
-  return 'It was a tie!';
+  playRound(choice, getComputerChoice());
 }
 
-function game() {
-  const score = { player: 0, computer: 0, tie: 0 };
+const buttons = document.querySelectorAll('button');
 
-  const playerSelection = prompt('Enter "rock", "paper", or "scissors"');
-  const result = playRound(playerSelection, getComputerChoice());
+buttons.forEach((button) => button.addEventListener('click', handleClick));
 
-  score[result] += 1;
+// function declareWinner(score) {
+//   if (score.player > score.comuputer) return 'Congatulations! You win!';
 
-  console.log(declareWinner(score));
-}
+//   if (score.computer > score.player) return 'Sorry, you lost!';
+
+//   return 'It was a tie!';
+// }
+
+// function game() {
+//   const score = { player: 0, computer: 0, tie: 0 };
+
+//   const playerSelection = prompt('Enter "rock", "paper", or "scissors"');
+//   const result = playRound(playerSelection, getComputerChoice());
+
+//   score[result] += 1;
+
+//   console.log(declareWinner(score));
+// }
