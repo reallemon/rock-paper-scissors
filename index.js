@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const CHOICES = ['rock', 'paper', 'scissors'];
 
 function getComputerChoice() {
@@ -13,52 +14,34 @@ function playRound(playerSelection, computerSelection) {
     case playerChoice === 'rock' && computerSelection === 'scissors':
     case playerChoice === 'paper' && computerSelection === 'rock':
     case playerChoice === 'scissors' && computerSelection === 'paper':
-      return [1, `You win! ${playerSelection} beats ${computerSelection}`];
-      break;
+      console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+      return 'player';
     case playerChoice === computerSelection:
-      return [0, `Tie! You both chose ${computerSelection}`];
-      break;
+      console.log(`Tie! You both chose ${computerSelection}`);
+      return 'tie';
     default:
-      return [-1, `You lose! ${computerSelection} beats ${playerSelection}`];
+      console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+      return 'computer';
   }
 }
 
+function declareWinner(score) {
+  if (score.player > score.comuputer) return 'Congatulations! You win!';
+
+  if (score.computer > score.player) return 'Sorry, you lost!';
+
+  return 'It was a tie!';
+}
+
 function game() {
-  let score = { player: 0, computer: 0, tie: 0 };
+  const score = { player: 0, computer: 0, tie: 0 };
 
   const playerSelection = prompt('Enter "rock", "paper", or "scissors"');
   const result = playRound(playerSelection, getComputerChoice());
 
-  scoreGame(result, score);
+  score[result] += 1;
 
   console.log(declareWinner(score));
-}
-
-function scoreGame(result, score) {
-  console.log(result[1]);
-
-  switch (result[0]) {
-    case 1:
-      score.player += 1;
-      break;
-    case 0:
-      score.tie += 1;
-      break;
-    case -1:
-      score.computer += 1;
-  }
-
-  console.log(score);
-}
-
-function declareWinner(score) {
-  if (score.player > score.comuputer) {
-    return "Congatulations! You're the winner";
-  } else if (score.computer > score.player) {
-    return 'Sorry, you lost!';
-  } else {
-    return 'It was a tie!';
-  }
 }
 
 game();
