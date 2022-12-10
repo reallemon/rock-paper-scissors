@@ -1,10 +1,15 @@
-/* eslint-disable no-console */
 const CHOICES = ['rock', 'paper', 'scissors'];
 
 function getComputerChoice() {
   const choiceIndex = Math.floor(Math.random() * 3);
 
   return CHOICES[choiceIndex];
+}
+
+function displayMessage(message) {
+  const messageLocation = document.querySelector('#message  p');
+
+  messageLocation.innerText = message;
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -14,13 +19,13 @@ function playRound(playerSelection, computerSelection) {
     case playerChoice === 'rock' && computerSelection === 'scissors':
     case playerChoice === 'paper' && computerSelection === 'rock':
     case playerChoice === 'scissors' && computerSelection === 'paper':
-      console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+      displayMessage(`You win! ${playerSelection} beats ${computerSelection}`);
       return 'player';
     case playerChoice === computerSelection:
-      console.log(`Tie! You both chose ${computerSelection}`);
+      displayMessage(`Tie! You both chose ${computerSelection}`);
       return 'tie';
     default:
-      console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+      displayMessage(`You lose! ${computerSelection} beats ${playerSelection}`);
       return 'computer';
   }
 }

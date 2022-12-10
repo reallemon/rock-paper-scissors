@@ -21,3 +21,10 @@ button {
   color: white;
   font-size: 2.5em;
 }
+
+#message {
+  display: flex;
+  justify-content: center;
+  color: lightgray;
+  font-size: 2em;
+}
