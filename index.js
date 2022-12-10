@@ -1,5 +1,6 @@
 const CHOICES = ['rock', 'paper', 'scissors'];
 const score = { player: 0, tie: 0, computer: 0 };
+const buttons = document.querySelectorAll('button');
 
 function getComputerChoice() {
   const choiceIndex = Math.floor(Math.random() * 3);
@@ -31,6 +32,16 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+function checkWinner() {
+  if (score.player >= 5) {
+    displayMessage("Congatulations! You're the winner");
+    endGame();
+  } else if (score.computer >= 5) {
+    displayMessage('Sorry, you lost!');
+    endGame();
+  }
+}
+
 function updateScore(winner) {
   score[winner] += 1;
 
@@ -49,8 +60,11 @@ function handleClick(e) {
   const winner = playRound(choice, getComputerChoice());
 
   updateScore(winner);
+  checkWinner();
 }
 
-const buttons = document.querySelectorAll('button');
+function endGame() {
+  buttons.forEach((button) => button.removeEventListener('click', handleClick));
+}
 
 buttons.forEach((button) => button.addEventListener('click', handleClick));
