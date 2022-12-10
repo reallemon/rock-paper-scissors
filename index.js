@@ -1,4 +1,5 @@
 const CHOICES = ['rock', 'paper', 'scissors'];
+const score = { player: 0, tie: 0, computer: 0 };
 
 function getComputerChoice() {
   const choiceIndex = Math.floor(Math.random() * 3);
@@ -30,31 +31,26 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
+function updateScore(winner) {
+  score[winner] += 1;
+
+  const scoreObj = {
+    player: document.querySelector('#player'),
+    tie: document.querySelector('#tie'),
+    computer: document.querySelector('#computer'),
+  };
+
+  scoreObj[winner].innerText = score[winner];
+}
+
 function handleClick(e) {
   const choice = e.target.value;
 
-  playRound(choice, getComputerChoice());
+  const winner = playRound(choice, getComputerChoice());
+
+  updateScore(winner);
 }
 
 const buttons = document.querySelectorAll('button');
 
 buttons.forEach((button) => button.addEventListener('click', handleClick));
-
-// function declareWinner(score) {
-//   if (score.player > score.comuputer) return 'Congatulations! You win!';
-
-//   if (score.computer > score.player) return 'Sorry, you lost!';
-
-//   return 'It was a tie!';
-// }
-
-// function game() {
-//   const score = { player: 0, computer: 0, tie: 0 };
-
-//   const playerSelection = prompt('Enter "rock", "paper", or "scissors"');
-//   const result = playRound(playerSelection, getComputerChoice());
-
-//   score[result] += 1;
-
-//   console.log(declareWinner(score));
-// }
