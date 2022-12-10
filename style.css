@@ -12,3 +12,12 @@ body {
 button {
   scale: 200%;
 }
+
+#score {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+
+  color: white;
+  font-size: 2.5em;
+}
